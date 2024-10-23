@@ -1,0 +1,114 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    background-size: contain; /* Ajusta el tamaño de la imagen para que se vea completa */
+    background-color: black;
+  }
+  .game-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+  #background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('background1.jpg'); /* Cambia esto según tu imagen */
+    background-size: contain; /* Mantiene la relación de aspecto */
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+  #flecha {
+    position: absolute;
+    width: 12.8%;
+    height: 15.8%;
+    top: 66%;
+    left: 80%;
+  }
+  #volver {
+    position: absolute;
+    width: 7.8%;
+    height: 8.8%;
+    top: 90%;
+    left: 18%;
+  }
+  #SalirDePieza {
+    position: absolute;
+    width: 5.8%;
+    height: 6.8%;
+    top: 30%;
+    left: 10%;
+  }
+  #Living {
+    position: absolute;
+    width: 5.8%;
+    height: 6.8%;
+    top: 55%;
+    left: 52%;
+  }
+  #baño {
+    position: absolute;
+    width: 5.8%;
+    height: 6.8%;
+    top: 55%;
+    left: 17%;
+  }
+  #Cuadro {
+    position: absolute;
+    width: 15%;
+    height: 32%;
+    top: 8.5%;
+    left: 20%;
+  }
+  #mensaje {
+    position: absolute;
+    font-size: 200%; /* Tamaño del texto */
+    color: blue; /* Color del texto */
+    font-family: 'Oswald', sans-serif; /* Fuente profesional */
+    margin-top: 20px; /* Espacio desde el elemento superior */
+    text-align: center; /* Centrar el texto horizontalmente */
+    background-color: rgba(255, 255, 255, 0.3); /* Fondo amarillo semitransparente */
+    border: 1px solid black; /* Borde del contenedor */
+    padding: 10px; /* Espaciado interno */
+    width: 50%; /* Ancho del contenedor */
+    margin: 20px auto; /* Centrar el div en la página */
+    top: 90%;
+    white-space: pre-wrap; /* Para mantener espacios y saltos de línea */
+  }
+  @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+  .empezar {
+    position: absolute;
+    width: 20%;
+    height: 20%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centrar el botón correctamente */
+    background-color: #3498db; /* Color de fondo */
+    border: none; /* Sin borde */
+    color: white; /* Color del texto */
+    padding: 15px 30px; /* Espaciado interno */
+    text-align: center; /* Centrado del texto */
+    text-decoration: none; /* Sin subrayado */
+    display: inline-block; /* Mostrar como un botón */
+    font-size: 500%; /* Tamaño de la fuente aumentado para mayor legibilidad */
+    font-family: 'Oswald', sans-serif; /* Fuente profesional */
+    font-weight: 500; /* Peso de la fuente */
+    letter-spacing: 1px; /* Espaciado entre letras */
+    line-height: 1.5; /* Altura de línea para mejorar la legibilidad */
+    border-radius: 30px; /* Bordes redondeados */
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1); /* Sombra */
+    transition: all 0.3s ease; /* Transición suave */
+    cursor: pointer; /* Cambiar el cursor a puntero */
+}
+
+.empezar:hover {
+    background-color: #2980b9; /* Cambiar color al pasar el mouse */
+    box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.3); /* Más sombra */
+}
+  
