@@ -21,12 +21,30 @@ const baño = document.getElementById('baño');
 baño.style.display = 'none';
 const Cuadro = document.getElementById('Cuadro');
 Cuadro.style.display = 'none';
-const textoCompleto = "Es... es ella, ¿no? Mi... mi querida...";
-function escribirTexto() {
+const Sudoku = document.getElementById('Sudoku');
+Sudoku.style.display = 'none';
+const Tele = document.getElementById('Tele');
+Tele.style.display = 'none';
+let textoCompleto = "";
+let textoCompleto2 = "";
+let contador1 = 0
+let haRegistrado = false;
+const video = document.getElementById("miVideo");
+video.style.display = 'none';
+let detenerEscritura = false;
+function escribirTexto(textoCompleto) {
+  if (detenerEscritura) return;
   if (indice < textoCompleto.length) {
     mensaje.innerText += textoCompleto[indice];
     indice++;
-    setTimeout(escribirTexto, 165); // Cambia el tiempo (100 ms) para controlar la velocidad
+    setTimeout(() => escribirTexto(textoCompleto, indice), 100); // Llamada recursiva con el texto y el nuevo índice
+  }
+}
+function escribirTexto2(textoCompleto2) {
+  if (indice2 < textoCompleto2.length) {
+    mensaje.innerText += textoCompleto2[indice2];
+    indice2++;
+    setTimeout(() => escribirTexto2(textoCompleto2, indice2), 100); // Llamada recursiva con el texto y el nuevo índice
   }
 }
     
@@ -34,7 +52,7 @@ const audio = new Audio('AudioRespiro.mp3');
 const playButton = document.getElementById('empezar');
 audio.loop = true;
 playButton.addEventListener('click', function() {
-  audio.play();
+  //audio.play();
   playButton.style.display = 'none';
   loadScene(currentScene);
   flecha.style.display = 'block';
@@ -42,7 +60,9 @@ playButton.addEventListener('click', function() {
   mensaje.style.display = 'Block';
 });
 function loadScene(sceneIndex) {
+  mensaje.innerText = ''; // Limpia el texto anterior
   indice = textoCompleto.length;
+  indice2 = textoCompleto2.length;
   const scene = scenes[sceneIndex];
   document.getElementById('background').src = scene.background;
 }
@@ -55,6 +75,7 @@ function loadScene(sceneIndex) {
         SalirDePieza.style.display = 'block';
         mensaje.innerText = ''; // Limpia el texto anterior
         Cuadro.style.display = 'none';
+        Sudoku.style.display = 'block';
         // Cargar la nueva escena
       loadScene(currentScene); 
     }
@@ -68,7 +89,12 @@ function loadScene(sceneIndex) {
           SalirDePieza.style.display = 'none';
           Living.style.display = 'block';
           baño.style.display = 'block';
-        loadScene(currentScene); // Cargar la nueva escena
+          Sudoku.style.display = 'none';
+          mensaje.innerText = ''; // Limpia el texto anterior 
+          indice2 = 0; // Reinicia el índice para el efecto
+          loadScene(currentScene);
+          textoCompleto2 = " ¡Alo!, ¿hay alguien por ahi?";
+          escribirTexto2(textoCompleto2);
       }
     });
         Living.addEventListener('click', function() {
@@ -80,13 +106,32 @@ function loadScene(sceneIndex) {
               SalirDePieza.style.display = 'none';
               Living.style.display = 'none';
               baño.style.display = 'none';
+              Tele.style.display = 'block';
+              video.style.display = 'block';
+              video.play();
+              video.playbackRate = 1.4;
+              video.addEventListener("timeupdate", () => {
+                if (video.currentTime >= 5 && !haRegistrado) {
+                  mensaje.innerText = ''; // Limpia el texto anterior
+                  indice = 0; // Reinicia el índice para el efecto
+                  escribirTexto("¿Robos en casas?, que miedo...");
+                  haRegistrado = true; // Evita que el mensaje se muestre varias veces
+                }
+              });
             loadScene(currentScene); // Cargar la nueva escena
           }
         });
         Cuadro.addEventListener('click', function() {
           mensaje.innerText = ''; // Limpia el texto anterior
           indice = 0; // Reinicia el índice para el efecto
-          escribirTexto(); // Inicia el efecto de escritura
+          textoCompleto = "Es... es ella, ¿no? Mi... mi querida...";
+          escribirTexto(textoCompleto); // Inicia el efecto de escritura
+        });
+        Sudoku.addEventListener('click', function() {
+          mensaje.innerText = ''; // Limpia el texto anterior
+          indice = 0; // Reinicia el índice para el efecto
+          textoCompleto = "Me dijeron que esto me ayudaría, pero ¿para qué?";
+          escribirTexto(textoCompleto); // Inicia el efecto de escritura
         });
 volver.addEventListener('click', function() {
   const currentSrc = volver.src;
@@ -98,6 +143,9 @@ volver.addEventListener('click', function() {
       SalirDePieza.style.display = 'none';
       baño.style.display = 'none';
       Cuadro.style.display = 'block';
+      Sudoku.style.display = 'none';
+      mensaje.innerText = '';
+      indice2 = textoCompleto2.length;
     }
     if(currentScene==2){
       currentScene = 1;
@@ -106,6 +154,9 @@ volver.addEventListener('click', function() {
       SalirDePieza.style.display = 'block';
       Living.style.display = 'none';
       baño.style.display = 'none';
+      Sudoku.style.display = 'block';
+      mensaje.innerText = '';
+      indice2 = textoCompleto2.length;
     }
     if(currentScene==3){
       currentScene = 2;
@@ -114,6 +165,10 @@ volver.addEventListener('click', function() {
       SalirDePieza.style.display = 'none';
       Living.style.display = 'block';
       baño.style.display = 'block';
+      Tele.style.display = 'none';
+      video.style.display = 'none';
+      mensaje.innerText = '';
+      video.pause();
     }
     loadScene(currentScene); // Cargar la nueva escena
   }

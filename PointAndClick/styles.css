@@ -66,6 +66,27 @@ body {
     top: 8.5%;
     left: 20%;
   }
+  #Sudoku {
+    position: absolute;
+    width: 15%;
+    height: 32%;
+    top: 48%;
+    left: 38%;
+  }
+  #miVideo {
+    position: absolute;
+    width: 30%;
+    height: 26%;
+    top: 13%;
+    left: 33%;
+  }
+  #Tele {
+    position: absolute;
+    width: 30%;
+    height: 28%;
+    top: 12%;
+    left: 33%;
+  }
   #mensaje {
     position: absolute;
     font-size: 200%; /* Tamaño del texto */
