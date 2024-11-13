@@ -74,6 +74,7 @@ video.style.display = 'none';
 //Funcion para escribir texto que se puede reutilizar
 function escribirTexto(textoCompleto) {
   if (indice < textoCompleto.length) {
+    mensaje.style.color = 'blue';
     mensaje.innerText += textoCompleto[indice];
     indice++;
     setTimeout(() => escribirTexto(textoCompleto, indice), 100); // Llamada recursiva con el texto y el nuevo índice
@@ -82,6 +83,7 @@ function escribirTexto(textoCompleto) {
 //Funcion para escribir texto que solo saldrá una vez
 function escribirTexto2(textoCompleto2) {
   if (indice2 < textoCompleto2.length) {
+    mensaje.style.color = 'blue';
     mensaje.innerText += textoCompleto2[indice2];
     indice2++;
     setTimeout(() => escribirTexto2(textoCompleto2, indice2), 100); // Llamada recursiva con el texto y el nuevo índice
@@ -200,6 +202,8 @@ function loadScene(sceneIndex) {
             indiceTexto = (indiceTexto + 1) % textos.length;
             if (indiceTexto == textos.length - 1) {
               volver.style.display = 'block';
+              Living.style.display = 'block';
+              baño.style.display = 'block';
               Celu.style.display = 'none';
               Celu.remove;
               loadScene(currentScene);
@@ -248,6 +252,9 @@ volver.addEventListener('click', function() {
         Celu.style.display = 'block';
         audio2.play();
         volver.style.display = 'none';
+        Living.style.display = 'none';
+        baño.style.display = 'none';
+        LLamadaHija++;
       } 
     }
     loadScene(currentScene); // Cargar la nueva escena
