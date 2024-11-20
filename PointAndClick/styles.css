@@ -24,13 +24,6 @@ body {
     background-position: center center;
     background-repeat: no-repeat;
   }
-  #flecha {
-    position: absolute;
-    width: 12.8%;
-    height: 15.8%;
-    top: 66%;
-    left: 80%;
-  }
   #volver {
     position: absolute;
     width: 7.8%;
@@ -59,20 +52,18 @@ body {
     top: 55%;
     left: 17%;
   }
-  #Cuadro {
-    position: absolute;
-    width: 15%;
-    height: 32%;
-    top: 8.5%;
-    left: 20%;
-  }
   #Sudoku {
     position: absolute;
-    width: 15%;
-    height: 32%;
-    top: 48%;
-    left: 38%;
+    width: 10%;
+    height: 22%;
+    top: 72%;
+    left: 83%;
+    transition: transform 0.3s ease; /* Transición suave */
   }
+  #Sudoku:hover {
+    content: url("sudoku1.png"); /* Cambia la imagen */
+    transform: scale(1.0); /* Aumenta el tamaño ligeramente al pasar el puntero */
+}
   #miVideo {
     position: absolute;
     width: 30%;
@@ -87,6 +78,33 @@ body {
     top: 12%;
     left: 37%;
   }
+  #Celu {
+    position: absolute;
+    width: 25%;
+    height: 48%;
+    top: 52%;
+    left: 70%;
+  }
+  #EfectoRadio {
+    position: absolute;
+    width: 10%;
+    height: 15%;
+    top: 70.1%;
+    left: 72.6%;
+    animation: pulso 1.02s infinite; /* Aplica la animación */
+    transition: transform 0.2s ease; /* Para suavizar el cambio */
+  }
+@keyframes pulso {
+  0% {
+      transform: scale(1); /* Tamaño original */
+  }
+  50% {
+      transform: scale(1.05); /* Aumenta el tamaño un 5% */
+  }
+  100% {
+      transform: scale(1); /* Vuelve al tamaño original */
+  }
+}
   #mensaje {
     position: absolute;
     font-size: 200%; /* Tamaño del texto */
@@ -132,4 +150,124 @@ body {
     background-color: #2980b9; /* Cambiar color al pasar el mouse */
     box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.3); /* Más sombra */
 }
-  
+.boton-estilizado {
+  position: absolute;
+  width: 11%;
+  height: 100%;
+  top: 0%;
+  left: 0%;
+  background-color: rgba(0, 0, 0, 0.05);
+  color: white; /* Texto blanco */
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px; /* Bordes redondeados */
+  padding: 12px 24px; /* Espaciado interno */
+  font-size: 16px; /* Tamaño del texto */
+  font-family: 'Arial', sans-serif; /* Tipografía clara */
+  cursor: pointer; /* Cambia el cursor al pasar el mouse */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+  transition: all 0.3s ease; /* Animación suave al interactuar */
+}
+
+.boton-estilizado:hover {
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo negro con 20% de opacidad */
+  color: #ffffff; /* Mantén el texto blanco */
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.5); /* Sombra más fuerte al pasar el mouse */
+}
+
+.boton-estilizado:active {
+  background-color: rgba(0, 0, 0, 0.4); /* Fondo negro con 40% de opacidad */
+  transform: scale(0.98); /* Pequeña reducción al hacer clic */
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3); /* Sombra más pequeña */
+}
+
+.IrLiving {
+  position: absolute;
+  width: 9%;
+  height: 100%;
+  top: 0%;
+  left: 91%;
+  background-color: rgba(0, 0, 0, 0.05);
+  color: white; /* Texto blanco */
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px; /* Bordes redondeados */
+  padding: 12px 24px; /* Espaciado interno */
+  font-size: 16px; /* Tamaño del texto */
+  font-family: 'Arial', sans-serif; /* Tipografía clara */
+  cursor: pointer; /* Cambia el cursor al pasar el mouse */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+  transition: all 0.3s ease; /* Animación suave al interactuar */
+}
+
+.IrLiving:hover {
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo negro con 20% de opacidad */
+  color: #ffffff; /* Mantén el texto blanco */
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.5); /* Sombra más fuerte al pasar el mouse */
+}
+
+.IrLiving:active {
+  background-color: rgba(0, 0, 0, 0.4); /* Fondo negro con 40% de opacidad */
+  transform: scale(0.98); /* Pequeña reducción al hacer clic */
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3); /* Sombra más pequeña */
+}
+
+.IrCocina {
+  position: absolute;
+  width: 9%;
+  height: 74%;
+  top: 18%;
+  left: 25.5%;
+  background-color: rgba(0, 0, 0, 0.05);
+  color: white; /* Texto blanco */
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px; /* Bordes redondeados */
+  padding: 12px 24px; /* Espaciado interno */
+  font-size: 16px; /* Tamaño del texto */
+  font-family: 'Arial', sans-serif; /* Tipografía clara */
+  cursor: pointer; /* Cambia el cursor al pasar el mouse */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+  transition: all 0.3s ease; /* Animación suave al interactuar */
+}
+
+.IrCocina:hover {
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo negro con 20% de opacidad */
+  color: #ffffff; /* Mantén el texto blanco */
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.5); /* Sombra más fuerte al pasar el mouse */
+}
+
+.IrCocina:active {
+  background-color: rgba(0, 0, 0, 0.4); /* Fondo negro con 40% de opacidad */
+  transform: scale(0.98); /* Pequeña reducción al hacer clic */
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3); /* Sombra más pequeña */
+}
+
+.Cuadro {
+  position: absolute;
+  width: 12%;
+  height: 42%;
+  border: 0;
+  margin: 0; /* Elimina cualquier margen */
+  padding: 0; /* Elimina cualquier relleno interno */
+  top: 6%;
+  left: 14.8%;
+  background-image: url('cuadro0.png'); /* Ruta de la imagen */
+  background-size: cover; /* Asegura que la imagen cubra el contenedor */
+  background-position: center; /* Centra la imagen */
+  background-repeat: no-repeat; /* Evita que la imagen se repita */
+  background-color: rgba(0, 0, 0, 0);
+  cursor: pointer; /* Cambia el cursor al pasar el mouse */
+  transition: transform 0.3s ease; /* Transición suave */
+  outline: none; /* Elimina el contorno al enfocar */
+}
+
+.Cuadro:hover {
+  outline: none; /* Elimina el contorno al enfocar */
+  margin: 0; /* Elimina cualquier margen */
+  padding: 0; /* Elimina cualquier relleno interno */
+  border-radius: 10%;
+  border: 0;
+  background-image: url('cuadro1.png'); /* Ruta de la imagen */
+  transform: scale(1.0); /* Aumenta el tamaño ligeramente al pasar el puntero */
+}
