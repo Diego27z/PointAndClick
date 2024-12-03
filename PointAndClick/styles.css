@@ -64,20 +64,6 @@ body {
     content: url("sudoku1.png"); /* Cambia la imagen */
     transform: scale(1.0); /* Aumenta el tamaño ligeramente al pasar el puntero */
 }
-  #miVideo {
-    position: absolute;
-    width: 30%;
-    height: 26%;
-    top: 13%;
-    left: 37%;
-  }
-  #Tele {
-    position: absolute;
-    width: 30%;
-    height: 28%;
-    top: 12%;
-    left: 37%;
-  }
   #Celu {
     position: absolute;
     width: 25%;
@@ -88,9 +74,9 @@ body {
   #EfectoRadio {
     position: absolute;
     width: 10%;
-    height: 15%;
-    top: 70.1%;
-    left: 72.6%;
+    height: 12%;
+    top: 55%;
+    left: 14.7%;
     animation: pulso 1.02s infinite; /* Aplica la animación */
     transition: transform 0.2s ease; /* Para suavizar el cambio */
   }
@@ -99,7 +85,7 @@ body {
       transform: scale(1); /* Tamaño original */
   }
   50% {
-      transform: scale(1.05); /* Aumenta el tamaño un 5% */
+      transform: scale(1.14); /* Aumenta el tamaño un 5% */
   }
   100% {
       transform: scale(1); /* Vuelve al tamaño original */
@@ -183,10 +169,10 @@ body {
 
 .IrLiving {
   position: absolute;
-  width: 9%;
+  width: 15%;
   height: 100%;
   top: 0%;
-  left: 91%;
+  left: 76%;
   background-color: rgba(0, 0, 0, 0.05);
   color: white; /* Texto blanco */
   border: 2px solid rgba(255, 255, 255, 0.1);
@@ -214,10 +200,10 @@ body {
 
 .IrCocina {
   position: absolute;
-  width: 9%;
-  height: 74%;
-  top: 18%;
-  left: 25.5%;
+  width: 5%;
+  height: 62%;
+  top: 25%;
+  left: 31%;
   background-color: rgba(0, 0, 0, 0.05);
   color: white; /* Texto blanco */
   border: 2px solid rgba(255, 255, 255, 0.1);
@@ -270,4 +256,29 @@ body {
   border: 0;
   background-image: url('cuadro1.png'); /* Ruta de la imagen */
   transform: scale(1.0); /* Aumenta el tamaño ligeramente al pasar el puntero */
+}
+
+#Cartel1 {
+  position: absolute;
+  width: 30%;
+  height: 30%;
+  top: -30%; /* Posición inicial fuera de la pantalla */
+  left: 35%; /* Centrado horizontalmente */
+  transition: top 8s cubic-bezier(0.25, 0.1, 0.25, 1); /* Movimiento suave */
+  z-index: 10000; /* Asegurarte de que esté visible encima */
+}
+
+#chaleco {
+  position: absolute;
+  width: 10%;
+  height: 10%;
+  top: 48%;
+  left: 76%;
+}
+#pastillas {
+  position: absolute;
+  width: 10%;
+  height: 10%;
+  top: 77%;
+  left: 47%;
 }

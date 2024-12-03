@@ -10,12 +10,12 @@ const scenes = [
 const textos = [
   ' ',
   ' Hola.',
-  ' Hola papá, ¿cómo estás?.',
-   ' Muy bien hija mía, ¿Cómo vas tú?.',
-   ' Todo bien viejito. Oye, ¿sabes si dejé mi chaleco allá en la mesa?, no lo encuentro.',
-   ' Sabes qué, me parece que sí… Voy a mirar y te aviso.',
-   ' Gracias papá, me avisas cualquier cosa.',
-   ' Obvio hija, cuídate mucho.',
+ // ' Hola papá, ¿cómo estás?.',
+  // ' Muy bien hija mía, ¿Cómo vas tú?.',
+  // ' Todo bien viejito. Oye, ¿sabes si dejé mi chaleco allá en la mesa?, no lo encuentro.',
+  // ' Sabes qué, me parece que sí… Voy a mirar y te aviso.',
+ //  ' Gracias papá, me avisas cualquier cosa.',
+ //  ' Obvio hija, cuídate mucho.',
   ' '
 ];
 
@@ -153,7 +153,7 @@ setTimeout(() => {
   Cuadro.style.display = 'block';
   mensaje.style.display = 'Block';
   Button.style.display = 'block';
-  Sudoku.style.display = 'block';
+  //Sudoku.style.display = 'block';
 });
 
   //Click en primera puerta
@@ -208,14 +208,40 @@ IrCocina.addEventListener('click', function() {
 loadScene(currentScene); 
 });
         //Click en Cuadro de esposa
+        let clickCuadro = 0;
         Cuadro.addEventListener('click', function() {
-          if (!escribiendo) {
+          if (!escribiendo && clickCuadro == 0) {
+              escribiendo = true;
+              mensaje.innerText = ''; // Limpia el texto anterior
+              indice = 0; // Reinicia el índice para el efecto
+              textoCompleto = "... ¿Y este cuadro?";
+              escribirTexto(textoCompleto); // Inicia el efecto de escritura
+              clickCuadro++;
+          }   
+          if (!escribiendo && clickCuadro == 1) {
             escribiendo = true;
+            mensaje.innerText = ''; // Limpia el texto anterior
+            indice = 0; // Reinicia el índice para el efecto
+            textoCompleto = "...";
+            escribirTexto(textoCompleto); // Inicia el efecto de escritura
+            clickCuadro++;
+        }   
+        if (!escribiendo && clickCuadro == 2) {
+          escribiendo = true;
           mensaje.innerText = ''; // Limpia el texto anterior
           indice = 0; // Reinicia el índice para el efecto
-          textoCompleto = "Es... es ella, ¿no? Mi... mi querida...";
+          textoCompleto = "¡A sí!, Es mi esposa.";
           escribirTexto(textoCompleto); // Inicia el efecto de escritura
-          }
+          clickCuadro++;
+      }   
+      if (!escribiendo && clickCuadro == 3) {
+        escribiendo = true;
+        mensaje.innerText = ''; // Limpia el texto anterior
+        indice = 0; // Reinicia el índice para el efecto
+        textoCompleto = "";
+        escribirTexto(textoCompleto); // Inicia el efecto de escritura
+        clickCuadro = 0;
+    } 
         });
 
         //Click en Sudoku
@@ -239,61 +265,43 @@ loadScene(currentScene);
                         textoCompleto = "¡Aquí está el chaleco!..";
                         escribirTexto(textoCompleto); // Inicia el efecto de escritura
                         clickChaleco++;
+                        Chaleco.style.display = 'none';
+                        escribiendo = true;
+                        mensaje.innerText = ''; // Limpia el texto anterior
+                        indice = 0; // Reinicia el índice para el efecto
+                        textoCompleto = "";
+                        escribirTexto(textoCompleto); // Inicia el efecto de escritura
+                        clickChaleco = 0;
+                        const fadeEffect = document.createElement('div');
+                        fadeEffect.id = 'fadeEffect';
+                      
+                        // Estilos del efecto de oscurecimiento
+                        fadeEffect.style.position = 'fixed';
+                        fadeEffect.style.top = '0';
+                        fadeEffect.style.left = '0';
+                        fadeEffect.style.width = '100%';
+                        fadeEffect.style.height = '100%';
+                        fadeEffect.style.backgroundColor = 'black'; // Color del efecto
+                        fadeEffect.style.opacity = '0'; // Comienza transparente
+                        fadeEffect.style.transition = 'opacity 8s cubic-bezier(0.25, 0.1, 0.25, 1)'; // Transición de opacidad
+                        fadeEffect.style.zIndex = '9999'; // Asegura que esté sobre todo
+                        fadeEffect.style.pointerEvents = 'none'; // Permitir interacción con elementos debajo
+                      
+                        // Añadir el efecto al cuerpo
+                        document.body.appendChild(fadeEffect);
+                      
+                        // Iniciar la transición para oscurecer la pantalla
+                        setTimeout(() => {
+                          fadeEffect.style.opacity = '1'; // Gradualmente oscurecer la pantalla
+                        }, 50); // Pequeño retraso para asegurar que se renderice
+                      
+                        // Eliminar el efecto de oscurecimiento después de la transición, pero no restaurar la opacidad
+                        setTimeout(() => {
+                          // No eliminamos el div fadeEffect, solo lo dejamos como está para que la pantalla siga oscura
+                          fadeEffect.remove(); // Elimina esta línea para mantener la pantalla oscura
+                          window.location.href = 'Dia3.html';
+                        }, 8000); // Tiempo de transición (8s) + margen
                     }   
-                    if (!escribiendo && clickChaleco == 1) {
-                      escribiendo = true;
-                      mensaje.innerText = ''; // Limpia el texto anterior
-                      indice = 0; // Reinicia el índice para el efecto
-                      textoCompleto = "Por Dios esta niña… siempre con la cabeza en cualquier parte.";
-                      escribirTexto(textoCompleto); // Inicia el efecto de escritura
-                      clickChaleco++;
-                  } 
-                  if (!escribiendo && clickChaleco == 2) {
-                    escribiendo = true;
-                    mensaje.innerText = ''; // Limpia el texto anterior
-                    indice = 0; // Reinicia el índice para el efecto
-                    textoCompleto = "Se le olvida todo igual que a mi.";
-                    escribirTexto(textoCompleto); // Inicia el efecto de escritura
-                    clickChaleco++;
-                }   
-                if (!escribiendo && clickChaleco == 3) {
-                  Chaleco.style.display = 'none';
-                  escribiendo = true;
-                  mensaje.innerText = ''; // Limpia el texto anterior
-                  indice = 0; // Reinicia el índice para el efecto
-                  textoCompleto = "";
-                  escribirTexto(textoCompleto); // Inicia el efecto de escritura
-                  clickChaleco = 0;
-                  const fadeEffect = document.createElement('div');
-                  fadeEffect.id = 'fadeEffect';
-                
-                  // Estilos del efecto de oscurecimiento
-                  fadeEffect.style.position = 'fixed';
-                  fadeEffect.style.top = '0';
-                  fadeEffect.style.left = '0';
-                  fadeEffect.style.width = '100%';
-                  fadeEffect.style.height = '100%';
-                  fadeEffect.style.backgroundColor = 'black'; // Color del efecto
-                  fadeEffect.style.opacity = '0'; // Comienza transparente
-                  fadeEffect.style.transition = 'opacity 8s cubic-bezier(0.25, 0.1, 0.25, 1)'; // Transición de opacidad
-                  fadeEffect.style.zIndex = '9999'; // Asegura que esté sobre todo
-                  fadeEffect.style.pointerEvents = 'none'; // Permitir interacción con elementos debajo
-                
-                  // Añadir el efecto al cuerpo
-                  document.body.appendChild(fadeEffect);
-                
-                  // Iniciar la transición para oscurecer la pantalla
-                  setTimeout(() => {
-                    fadeEffect.style.opacity = '1'; // Gradualmente oscurecer la pantalla
-                  }, 50); // Pequeño retraso para asegurar que se renderice
-                
-                  // Eliminar el efecto de oscurecimiento después de la transición, pero no restaurar la opacidad
-                  setTimeout(() => {
-                    // No eliminamos el div fadeEffect, solo lo dejamos como está para que la pantalla siga oscura
-                    fadeEffect.remove(); // Elimina esta línea para mantener la pantalla oscura
-                    window.location.href = 'Dia2.html';
-                  }, 8000); // Tiempo de transición (8s) + margen
-              }   
                 });
 
         //Click en Celular
