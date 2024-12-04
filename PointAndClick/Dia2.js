@@ -1,4 +1,5 @@
 let currentScene = 0;
+let contador = 0;
 //Aqui estan las fotos de las diferentes partes de la casa
 const scenes = [
   { background: '1.png' },
@@ -9,18 +10,19 @@ const scenes = [
 ];
 const textos = [
   ' ',
-  ' Hola.',
-  //' Hola papá, ¿cómo estás?.',
-  //' Muy bien hija mía, ¿Cómo vas tú?.',
- // ' Todo bien viejito. Oye, ¿sabes si dejé mi chaleco allá en la mesa?, no lo encuentro.',
- // ' Sabes qué, me parece que sí… Voy a mirar y te aviso.',
- // ' Gracias papá, me avisas cualquier cosa.',
- // ' Obvio hija, cuídate mucho.',
- // ' '
+  ' Holaaa, ¿cómo va todo? Me dejaste media preocupada ayer.',
+  ' Aló?, ¿Con quién hablo?',
+  ' Con tu hija po’. ¿Quién más?',
+  '  Aaaah, disculpame hija. No te reconocí la voz, todo bien por acá. ',
+  ' ¿Y tú, cómo estás?, ¿Cuándo vas a venir a ver a tu pobre viejo?',
+  ' Tú sabes que te voy a ver todos los domingos, como siempre.',
+  ' ¡Es verdad! Pero sabes que me encantan tus visitas…',
+  ' Bueno viejito, apenas pueda hacerme un tiempito te voy a acompañar,',
+  ' ¿bueno? y Acuérdate de tus pastillas de la mañana',
+  ' Bueno hija, nos vemos.',
+  ''
 ];
-
-
-const colores = ['blue', 'yellow'];
+const colores = ['blue'];
 let indiceTexto = 0; // Índice para controlar cuál texto se muestra
     let indiceLetra = 0; // Índice para controlar cuántas letras se muestran
     let escribiendo = false; 
@@ -77,6 +79,11 @@ EfectoRadio.style.display = 'none';
 const audio = new Audio('AudioRespiro.mp3');
 audio.loop = true;
 
+const A4 = new Audio('AudiosLLamadas/4.mp3');
+const A5 = new Audio('AudiosLLamadas/5.mp3');
+const A6 = new Audio('AudiosLLamadas/6.mp3');
+const A7 = new Audio('AudiosLLamadas/7.mp3');
+
 const playButton = document.getElementById('empezar');
 
 const Button = document.getElementById('boton-estilizado');
@@ -94,7 +101,7 @@ Cuadro.style.display = 'none';
 const Chaleco = document.getElementById('chaleco');
 Chaleco.style.display = 'none';
 let IraLiving = 0;
-let living = 0;
+let Cocina = 0;
 
 const audio2 = new Audio('AudioLLamada.mp3');
 audio2.volume = 0.3;
@@ -176,11 +183,6 @@ Button.addEventListener('click', function() {
 
 
 IrLiving.addEventListener('click', function() {
-  if(IraLiving == 1){
-    Chaleco.style.display = 'block';
-  }else{
-    IraLiving = 1;
-  }
   currentScene = 2;
   EfectoRadio.style.display = 'block';
   IrLiving.style.display = 'none';
@@ -198,47 +200,16 @@ IrLiving.addEventListener('click', function() {
      // }
   //  });
   
-  if(living == 1){
-    Pastillas.style.display = 'block';
-            //Click en Sudoku
-            Pastillas.addEventListener('click', function() {
-              const fadeEffect = document.createElement('div');
-              fadeEffect.id = 'fadeEffect';
-            
-              // Estilos del efecto de oscurecimiento
-              fadeEffect.style.position = 'fixed';
-              fadeEffect.style.top = '0';
-              fadeEffect.style.left = '0';
-              fadeEffect.style.width = '100%';
-              fadeEffect.style.height = '100%';
-              fadeEffect.style.backgroundColor = 'black'; // Color del efecto
-              fadeEffect.style.opacity = '0'; // Comienza transparente
-              fadeEffect.style.transition = 'opacity 8s cubic-bezier(0.25, 0.1, 0.25, 1)'; // Transición de opacidad
-              fadeEffect.style.zIndex = '9999'; // Asegura que esté sobre todo
-              fadeEffect.style.pointerEvents = 'none'; // Permitir interacción con elementos debajo
-            
-              // Añadir el efecto al cuerpo
-              document.body.appendChild(fadeEffect);
-            
-              // Iniciar la transición para oscurecer la pantalla
-              setTimeout(() => {
-                fadeEffect.style.opacity = '1'; // Gradualmente oscurecer la pantalla
-              }, 50); // Pequeño retraso para asegurar que se renderice
-            
-              // Eliminar el efecto de oscurecimiento después de la transición, pero no restaurar la opacidad
-              setTimeout(() => {
-                // No eliminamos el div fadeEffect, solo lo dejamos como está para que la pantalla siga oscura
-                fadeEffect.remove(); // Elimina esta línea para mantener la pantalla oscura
-                window.location.href = 'Dia3.html';
-              }, 8000); // Tiempo de transición (8s) + margen
-            });
-   
-  }
+
 
   loadScene(currentScene); // Cargar la nueva escena
 });
 
 IrCocina.addEventListener('click', function() {
+  if(IraLiving == 1){
+  }else{
+    IraLiving = 1;
+  }
   currentScene = 3;
   //Ocultar y Mostrar elementos correspondientes
   volver.style.display = 'block';
@@ -247,6 +218,42 @@ IrCocina.addEventListener('click', function() {
   mensaje.innerText = ''; // Limpia el texto anterior
   // Cargar la nueva escena
 loadScene(currentScene); 
+if(Cocina == 1){
+  Pastillas.style.display = 'block';
+          //Click en Sudoku
+          Pastillas.addEventListener('click', function() {
+            const fadeEffect = document.createElement('div');
+            fadeEffect.id = 'fadeEffect';
+          
+            // Estilos del efecto de oscurecimiento
+            fadeEffect.style.position = 'fixed';
+            fadeEffect.style.top = '0';
+            fadeEffect.style.left = '0';
+            fadeEffect.style.width = '100%';
+            fadeEffect.style.height = '100%';
+            fadeEffect.style.backgroundColor = 'black'; // Color del efecto
+            fadeEffect.style.opacity = '0'; // Comienza transparente
+            fadeEffect.style.transition = 'opacity 8s cubic-bezier(0.25, 0.1, 0.25, 1)'; // Transición de opacidad
+            fadeEffect.style.zIndex = '9999'; // Asegura que esté sobre todo
+            fadeEffect.style.pointerEvents = 'none'; // Permitir interacción con elementos debajo
+          
+            // Añadir el efecto al cuerpo
+            document.body.appendChild(fadeEffect);
+          
+            // Iniciar la transición para oscurecer la pantalla
+            setTimeout(() => {
+              fadeEffect.style.opacity = '1'; // Gradualmente oscurecer la pantalla
+            }, 50); // Pequeño retraso para asegurar que se renderice
+          
+            // Eliminar el efecto de oscurecimiento después de la transición, pero no restaurar la opacidad
+            setTimeout(() => {
+              // No eliminamos el div fadeEffect, solo lo dejamos como está para que la pantalla siga oscura
+              fadeEffect.remove(); // Elimina esta línea para mantener la pantalla oscura
+              window.location.href = 'Dia3.html';
+            }, 8000); // Tiempo de transición (8s) + margen
+          });
+ 
+}
 });
         //Click en Cuadro de esposa
         let clickCuadro = 0;
@@ -304,18 +311,44 @@ loadScene(currentScene);
             mensaje.innerHTML = ''; // Limpia el texto actual
             mensaje.style.color = colores[indiceTexto % colores.length];
             indiceLetra = 0;
+            contador++;              
+            if(contador == 1){
+              mensaje.style.color = 'yellow';
+              A4.play();
+            }
+            if(contador == 3){
+              mensaje.style.color = 'yellow';
+              A5.play();
+            }
+            if(contador == 6){
+              mensaje.style.color = 'yellow';
+              A6.play();
+            }
+            if(contador == 8){
+              mensaje.style.color = 'yellow';
+              A7.play();
+            }
+            if(contador == 9){
+              mensaje.style.color = 'yellow';
+              contador = -2;
+            }
             escribirTextoLLamada(); // Inicia el efecto de escritura
             // Cambia al siguiente texto en el arreglo
             indiceTexto = (indiceTexto + 1) % textos.length;
             //terminar llamada cuando no quedan más textos
             if (indiceTexto == textos.length - 1) {
-              living=1;
+              Cocina=1;
               volver.style.display = 'block';
               IrLiving.style.display = 'block';
               IrCocina.style.display = 'block';
               Celu.style.display = 'none';
               Celu.remove;
               loadScene(currentScene);
+              escribiendo = true;
+              mensaje.innerText = ''; // Limpia el texto anterior
+              indice = 0; // Reinicia el índice para el efecto
+              textoCompleto = "¿Dónde están estas pastillas? por aquí tendría que haberlas dejado…";
+              escribirTexto(textoCompleto); // Inicia el efecto de escritura
             }
           }
         });
@@ -359,6 +392,7 @@ volver.addEventListener('click', function() {
       IrLiving.style.display = 'block';
       IrCocina.style.display = 'block';
       EfectoRadio.style.display = 'none';
+      Pastillas.style.display = 'none';
       mensaje.innerText = '';
     }
     loadScene(currentScene); // Cargar la nueva escena

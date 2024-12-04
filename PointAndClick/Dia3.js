@@ -8,15 +8,12 @@ const scenes = [
   { background: 'fondooscuro.png' }
 ];
 const textos = [
-  ' ',
-  ' Hola.',
- // ' Hola papá, ¿cómo estás?.',
-  // ' Muy bien hija mía, ¿Cómo vas tú?.',
-  // ' Todo bien viejito. Oye, ¿sabes si dejé mi chaleco allá en la mesa?, no lo encuentro.',
-  // ' Sabes qué, me parece que sí… Voy a mirar y te aviso.',
- //  ' Gracias papá, me avisas cualquier cosa.',
- //  ' Obvio hija, cuídate mucho.',
-  ' '
+  ' Y bueno pasando a otras noticias, para toda la gente que nos escucha,',
+  ' sobre todo a la gente mayor,',
+  'informar que el indice de robos a casas ha incrementado,',
+   ' los delincuentes visualizan dentro de que horarios la casa queda sola',
+  ' o con un adulto mayor para aprovechar y entrar a robar.',
+  ''
 ];
 
 
@@ -25,12 +22,23 @@ let indiceTexto = 0; // Índice para controlar cuál texto se muestra
     let indiceLetra = 0; // Índice para controlar cuántas letras se muestran
     let escribiendo = false; 
     function escribirTextoLLamada() {
+      mensaje.style.color = 'black';
       if (indiceLetra < textos[indiceTexto].length) {
         mensaje.innerHTML += textos[indiceTexto][indiceLetra];
         indiceLetra++;
-        setTimeout(escribirTextoLLamada, 60);
-      }else {
+        setTimeout(escribirTextoLLamada, 45); // Velocidad de escritura
+      } else {
         escribiendo = false; // Permitir otro clic cuando termina de escribir
+        indiceTexto++; // Pasar al siguiente texto
+        if (indiceTexto < textos.length) {
+          // Si hay más textos, inicia el próximo automáticamente
+          setTimeout(() => {
+            mensaje.innerHTML = ''; // Limpia el mensaje
+            mensaje.style.color = 'black'; // Reinicia el color (si aplica)
+            indiceLetra = 0; // Reinicia el índice de la letra
+            escribirTextoLLamada(); // Llama al siguiente texto
+          }, 1000); // Espera 1 segundo antes de continuar
+        }
       }
     }
 
@@ -91,9 +99,10 @@ Cuadro.style.display = 'none';
 
 const Chaleco = document.getElementById('chaleco');
 Chaleco.style.display = 'none';
-let IraLiving = 0;
+let IraLiving = 1;
 
 const audio2 = new Audio('AudioLLamada.mp3');
+const ARadio = new Audio('AudiosLLamadas/ARadio.mp3');
 audio2.volume = 0.3;
 audio2.loop = true;
 
@@ -148,7 +157,8 @@ setTimeout(() => {
  setTimeout(() => {
   cartel1.style.top = '-30%'; // Mover hacia la posición inicial
 }, 8000); // Esperar 5 segundos antes de moverlo
-  //audio.play();
+  audio.play();
+  audio.volume = 1.0;
   playButton.style.display = 'none';
   Cuadro.style.display = 'block';
   mensaje.style.display = 'Block';
@@ -173,27 +183,27 @@ Button.addEventListener('click', function() {
 
 
 IrLiving.addEventListener('click', function() {
-  if(IraLiving == 1){
-    Chaleco.style.display = 'block';
-  }else{
-    IraLiving = 1;
-  }
   currentScene = 2;
   EfectoRadio.style.display = 'block';
   IrLiving.style.display = 'none';
   IrCocina.style.display = 'none';
  //   video.style.display = 'none';
-    //video.play();
- //  video.playbackRate = 1.4;
-    //Funcion que muestra un texto cuando el video llega a los 5 segundos
-   // video.addEventListener("timeupdate", () => {
-     // if (video.currentTime >= 5 && !haRegistrado) {
-       //mensaje.innerText = ''; // Limpia el texto anterior
-        //indice = 0; // Reinicia el índice para el efecto
-        //escribirTexto("¿Robos en casas?, que miedo...");
-        //haRegistrado = true; // Evita que el mensaje se muestre varias veces
-     // }
-  //  });
+ if(IraLiving==1){
+  audio.volume = 0.4;
+  ARadio.play();
+  if (!escribiendo) { // Solo continuar si no está escribiendo
+   volver.style.display = 'none';
+   escribirTextoLLamada(); // Inicia el efecto de escritura
+ }
+     ARadio.addEventListener('ended', () => {
+       mensaje.innerText = ''; // Limpia el texto anterior
+       indice = 0; // Reinicia el índice para el efecto
+       escribirTexto("¿Robos en el barrio?, ¿Y Marta está allá afuera? ¡Tengo que avisarle!");
+       volver.style.display = 'block';
+       audio.volume = 1.0;
+     });
+     IraLiving=2;
+ }
   loadScene(currentScene); // Cargar la nueva escena
 });
 
@@ -214,7 +224,7 @@ loadScene(currentScene);
               escribiendo = true;
               mensaje.innerText = ''; // Limpia el texto anterior
               indice = 0; // Reinicia el índice para el efecto
-              textoCompleto = "... ¿Y este cuadro?";
+              textoCompleto = "Marta, ¿dónde estás? ¿Habrá salido? Sabe que no puede salir sola.";
               escribirTexto(textoCompleto); // Inicia el efecto de escritura
               clickCuadro++;
           }   
@@ -254,78 +264,6 @@ loadScene(currentScene);
           escribirTexto(textoCompleto); // Inicia el efecto de escritura
           }
         });
-                //Click en Chaleco
-                let clickChaleco = 0;
-                Chaleco.addEventListener('click', function() {
-                  volver.style.display = 'none';
-                    if (!escribiendo && clickChaleco == 0) {
-                        escribiendo = true;
-                        mensaje.innerText = ''; // Limpia el texto anterior
-                        indice = 0; // Reinicia el índice para el efecto
-                        textoCompleto = "¡Aquí está el chaleco!..";
-                        escribirTexto(textoCompleto); // Inicia el efecto de escritura
-                        clickChaleco++;
-                        Chaleco.style.display = 'none';
-                        escribiendo = true;
-                        mensaje.innerText = ''; // Limpia el texto anterior
-                        indice = 0; // Reinicia el índice para el efecto
-                        textoCompleto = "";
-                        escribirTexto(textoCompleto); // Inicia el efecto de escritura
-                        clickChaleco = 0;
-                        const fadeEffect = document.createElement('div');
-                        fadeEffect.id = 'fadeEffect';
-                      
-                        // Estilos del efecto de oscurecimiento
-                        fadeEffect.style.position = 'fixed';
-                        fadeEffect.style.top = '0';
-                        fadeEffect.style.left = '0';
-                        fadeEffect.style.width = '100%';
-                        fadeEffect.style.height = '100%';
-                        fadeEffect.style.backgroundColor = 'black'; // Color del efecto
-                        fadeEffect.style.opacity = '0'; // Comienza transparente
-                        fadeEffect.style.transition = 'opacity 8s cubic-bezier(0.25, 0.1, 0.25, 1)'; // Transición de opacidad
-                        fadeEffect.style.zIndex = '9999'; // Asegura que esté sobre todo
-                        fadeEffect.style.pointerEvents = 'none'; // Permitir interacción con elementos debajo
-                      
-                        // Añadir el efecto al cuerpo
-                        document.body.appendChild(fadeEffect);
-                      
-                        // Iniciar la transición para oscurecer la pantalla
-                        setTimeout(() => {
-                          fadeEffect.style.opacity = '1'; // Gradualmente oscurecer la pantalla
-                        }, 50); // Pequeño retraso para asegurar que se renderice
-                      
-                        // Eliminar el efecto de oscurecimiento después de la transición, pero no restaurar la opacidad
-                        setTimeout(() => {
-                          // No eliminamos el div fadeEffect, solo lo dejamos como está para que la pantalla siga oscura
-                          fadeEffect.remove(); // Elimina esta línea para mantener la pantalla oscura
-                          window.location.href = 'Dia3.html';
-                        }, 8000); // Tiempo de transición (8s) + margen
-                    }   
-                });
-
-        //Click en Celular
-       Celu.addEventListener('click', function() {
-        audio2.pause();
-          if (!escribiendo) { // Solo continuar si no está escribiendo
-            escribiendo = true;
-            mensaje.innerHTML = ''; // Limpia el texto actual
-            mensaje.style.color = colores[indiceTexto % colores.length];
-            indiceLetra = 0;
-            escribirTextoLLamada(); // Inicia el efecto de escritura
-            // Cambia al siguiente texto en el arreglo
-            indiceTexto = (indiceTexto + 1) % textos.length;
-            //terminar llamada cuando no quedan más textos
-            if (indiceTexto == textos.length - 1) {
-              volver.style.display = 'block';
-              IrLiving.style.display = 'block';
-              IrCocina.style.display = 'block';
-              Celu.style.display = 'none';
-              Celu.remove;
-              loadScene(currentScene);
-            }
-          }
-        });
 
         //Click en "volver" que va variando segun en la habitacion donde uno se encuentre
 volver.addEventListener('click', function() {
@@ -351,14 +289,6 @@ volver.addEventListener('click', function() {
       EfectoRadio.style.display = 'none';
       Chaleco.style.display = 'none';
       mensaje.innerText = '';
-      if (LLamadaHija == 0){
-        Celu.style.display = 'block';
-        audio2.play();
-        volver.style.display = 'none';
-        IrLiving.style.display = 'none';
-        IrCocina.style.display = 'none';
-        LLamadaHija++;
-      } 
     }
     if(currentScene==3){
       currentScene = 1;
