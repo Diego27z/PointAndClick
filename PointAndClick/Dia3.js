@@ -213,7 +213,7 @@ IrLiving.addEventListener('click', function() {
        mensaje.innerText = ''; // Limpia el texto anterior
        indice = 0; // Reinicia el índice para el efecto
        mensaje.style.color = 'blue';
-       escribirTexto(" ¿Robos en el barrio?, ¿Y Marta está allá afuera? ¡Tengo que avisarle!");
+       escribirTexto("  ¿Robos en el barrio?, ¿Y Marta está allá afuera? ¡Tengo que avisarle!");
        volver.style.display = 'block';
        audio.volume = 1.0;
        IrAfuera.style.display = 'block';
