@@ -306,6 +306,7 @@ body {
   top: 48%;
   left: 76%;
 }
+
 #pastillas {
   position: absolute;
   width: 10%;
@@ -313,3 +314,10 @@ body {
   top: 80%;
   left: 10%;
 }
+
+#Silueta {
+  position: absolute;
+  height: 40%;
+  right: 19%;
+}
+

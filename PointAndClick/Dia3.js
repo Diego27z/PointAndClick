@@ -55,14 +55,17 @@ function escribirTexto(textoCompleto) {
 }
 
 //Funcion para escribir texto que solo saldrá una vez
-function escribirTexto2(textoCompleto2) {
-  if (indice2 < textoCompleto2.length) {
-    mensaje.style.color = 'blue';
-    mensaje.innerText += textoCompleto2[indice2];
-    indice2++;
-    setTimeout(() => escribirTexto2(textoCompleto2, indice2), 100); // Llamada recursiva con el texto y el nuevo índice
+function escribirTexto2(textoCompleto) {
+  if (indice < textoCompleto.length) {
+    mensaje.style.color = 'purple';
+    mensaje.innerText += textoCompleto[indice];
+    indice++;
+    setTimeout(() => escribirTexto(textoCompleto, indice), 60); // Llamada recursiva con el texto y el nuevo índice
+  }else {
+    escribiendo = false; // Permitir otro clic cuando termina de escribir
   }
-}  
+}
+
 //Botones y objetos disponibles/inactivos
 const mensaje = document.getElementById('mensaje');
 mensaje.style.display = 'none';
@@ -101,10 +104,15 @@ Cuadro.style.display = 'none';
 
 const Chaleco = document.getElementById('chaleco');
 Chaleco.style.display = 'none';
+
+const Silueta = document.getElementById('Silueta');
+Silueta.style.display = 'none';
+
 let IraLiving = 1;
 
 const audio2 = new Audio('AudioLLamada.mp3');
 const ARadio = new Audio('AudiosLLamadas/ARadio.mp3');
+const AHija = new Audio('AudiosLLamadas/8.mp3');
 audio2.volume = 0.3;
 audio2.loop = true;
 
@@ -179,7 +187,7 @@ Button.addEventListener('click', function() {
     volver.style.display = 'block';
     IrLiving.style.display = 'block';
     IrCocina.style.display = 'block';
-    //IrAfuera.style.display = 'none';
+    IrAfuera.style.display = 'none';
     mensaje.innerText = ''; // Limpia el texto anterior
     // Cargar la nueva escena
   loadScene(currentScene); 
@@ -193,7 +201,7 @@ IrLiving.addEventListener('click', function() {
   IrCocina.style.display = 'none';
  //   video.style.display = 'none';
  if(IraLiving==1){
-  //IrAfuera.style.display = 'none';
+  IrAfuera.style.display = 'none';
   audio.volume = 0.4;
   ARadio.play();
   if (!escribiendo) { // Solo continuar si no está escribiendo
@@ -206,8 +214,9 @@ IrLiving.addEventListener('click', function() {
        escribirTexto("  ¿Robos en el barrio?, ¿Y Marta está allá afuera? ¡Tengo que avisarle!");
        volver.style.display = 'block';
        audio.volume = 1.0;
-       //IrAfuera.style.display = 'block';
+       IrAfuera.style.display = 'block';
      });
+     
      IraLiving=2;
      
  }
@@ -218,13 +227,68 @@ IrCocina.addEventListener('click', function() {
   currentScene = 3;
   //Ocultar y Mostrar elementos correspondientes
   volver.style.display = 'block';
-  //IrAfuera.style.display = 'none';
+  IrAfuera.style.display = 'none';
   IrLiving.style.display = 'none';
   IrCocina.style.display = 'none';
   mensaje.innerText = ''; // Limpia el texto anterior
   // Cargar la nueva escena
 loadScene(currentScene); 
 });
+
+let clickAfuera = 0;
+IrAfuera.addEventListener('click', function() {
+  //Ocultar y Mostrar elementos correspondientes
+  volver.style.display = 'none';
+  IrAfuera.style.display = 'block';
+  IrLiving.style.display = 'none';
+  IrCocina.style.display = 'none';
+  EfectoRadio.style.display = 'none';
+
+  if (!escribiendo && clickAfuera == 0) {
+
+    escribiendo = true;
+    mensaje.innerText = ''; // Limpia el texto anterior
+    indice = 0; // Reinicia el índice para el efecto
+    textoCompleto = "¿Alguien entró?";
+    escribirTexto(textoCompleto); // Inicia el efecto de escritura
+    clickAfuera++;
+    }    
+    if (!escribiendo && clickAfuera == 1) {
+    Silueta.style.display = 'block';
+    escribiendo = true;
+    mensaje.innerText = ''; // Limpia el texto anterior
+    indice = 0; // Reinicia el índice para el efecto
+    textoCompleto = "¿Quién está ahí?";
+    escribirTexto(textoCompleto); // Inicia el efecto de escritura
+    clickAfuera++;
+    }   
+    if (!escribiendo && clickAfuera == 2) {
+    escribiendo = true;
+    mensaje.innerText = ''; // Limpia el texto anterior
+    indice = 0; // Reinicia el índice para el efecto
+    textoCompleto = "¡Me están Robando!";
+    escribirTexto(textoCompleto); // Inicia el efecto de escritura
+    clickAfuera++;
+    } 
+    if (!escribiendo && clickAfuera == 3) {
+      escribiendo = true;
+      mensaje.innerText = ''; // Limpia el texto anterior
+      indice = 0; // Reinicia el índice para el efecto
+      textoCompleto = "Papá... ¡Soy yo!";
+      AHija.play();
+      escribirTexto2(textoCompleto); // Inicia el efecto de escritura
+      clickAfuera++;
+      } 
+    if (!escribiendo && clickAfuera == 4) {
+    escribiendo = true;
+    mensaje.innerText = ''; // Limpia el texto anterior
+    indice = 0; // Reinicia el índice para el efecto
+    textoCompleto = "";
+    escribirTexto(textoCompleto); // Inicia el efecto de escritura
+    clickAfuera = 0;
+    } 
+});
+
         //Click en Cuadro de esposa
         let clickCuadro = 0;
         Cuadro.addEventListener('click', function() {
@@ -260,7 +324,7 @@ volver.addEventListener('click', function() {
       Button.style.display = 'block';
       Cuadro.style.display = 'block';
       Sudoku.style.display = 'block';
-      //IrAfuera.style.display = 'none';
+      IrAfuera.style.display = 'none';
       IrLiving.style.display = 'none';
       IrCocina.style.display = 'none';
       mensaje.innerText = '';
@@ -280,6 +344,14 @@ volver.addEventListener('click', function() {
       volver.style.display = 'block'; 
       IrLiving.style.display = 'block';
       IrCocina.style.display = 'block';
+      EfectoRadio.style.display = 'none';
+      mensaje.innerText = '';
+    }
+    if(currentScene==4){
+      currentScene = 1;
+      volver.style.display = 'none'; 
+      IrLiving.style.display = 'none';
+      IrCocina.style.display = 'none';
       EfectoRadio.style.display = 'none';
       mensaje.innerText = '';
     }

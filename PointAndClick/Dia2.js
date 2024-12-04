@@ -262,19 +262,11 @@ if(Cocina == 1){
               escribiendo = true;
               mensaje.innerText = ''; // Limpia el texto anterior
               indice = 0; // Reinicia el índice para el efecto
-              textoCompleto = "Marta...";
+              textoCompleto = "Marta... Te extraño tanto amor mío.";
               escribirTexto(textoCompleto); // Inicia el efecto de escritura
               clickCuadro++;
-          }   
-          if (!escribiendo && clickCuadro == 1) {
-            escribiendo = true;
-            mensaje.innerText = ''; // Limpia el texto anterior
-            indice = 0; // Reinicia el índice para el efecto
-            textoCompleto = "Te extraño tanto amor mío.";
-            escribirTexto(textoCompleto); // Inicia el efecto de escritura
-            clickCuadro++;
-        }   
-        if (!escribiendo && clickCuadro == 2) {
+          }    
+        if (!escribiendo && clickCuadro == 1) {
           escribiendo = true;
           mensaje.innerText = ''; // Limpia el texto anterior
           indice = 0; // Reinicia el índice para el efecto
@@ -282,7 +274,7 @@ if(Cocina == 1){
           escribirTexto(textoCompleto); // Inicia el efecto de escritura
           clickCuadro++;
       }   
-      if (!escribiendo && clickCuadro == 2) {
+      if (!escribiendo && clickCuadro == 3) {
         escribiendo = true;
         mensaje.innerText = ''; // Limpia el texto anterior
         indice = 0; // Reinicia el índice para el efecto
@@ -290,7 +282,7 @@ if(Cocina == 1){
         escribirTexto(textoCompleto); // Inicia el efecto de escritura
         clickCuadro++;
     } 
-      if (!escribiendo && clickCuadro == 3) {
+      if (!escribiendo && clickCuadro == 4) {
         escribiendo = true;
         mensaje.innerText = ''; // Limpia el texto anterior
         indice = 0; // Reinicia el índice para el efecto
