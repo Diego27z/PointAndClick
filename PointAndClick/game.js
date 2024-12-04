@@ -19,9 +19,9 @@ const textos = [
 ];
 
 const textosChaleco = [
-  ' Aquí está el chaleco.',
-  ' ¡Ah, aquí estaba!',
-  ' Debería llamarle para avisarle.',
+  ' ¡Aquí está el chaleco!..',
+  ' Por Dios esta niña… siempre con la cabeza en cualquier parte.',
+  ' Se le olvida todo igual que a mi.',
   ' '
 ];
 
