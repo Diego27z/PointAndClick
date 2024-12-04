@@ -282,3 +282,27 @@ body {
   top: 77%;
   left: 47%;
 }
+
+#Next {
+  position: absolute;
+  width: 10%;
+  height: 10%;
+  top: 77%;
+  left: 47%;
+}
+
+#NextCall {
+  position: absolute;
+  width: 10%;
+  height: 10%;
+  top: 77%;
+  left: 47%;
+}
+
+#NextChaleco {
+  position: absolute;
+  width: 10%;
+  height: 10%;
+  top: 77%;
+  left: 47%;
+}
