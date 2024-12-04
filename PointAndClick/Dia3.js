@@ -22,7 +22,7 @@ let indiceTexto = 0; // Índice para controlar cuál texto se muestra
     let indiceLetra = 0; // Índice para controlar cuántas letras se muestran
     let escribiendo = false; 
     function escribirTextoLLamada() {
-      mensaje.style.color = 'black';
+      
       if (indiceLetra < textos[indiceTexto].length) {
         mensaje.innerHTML += textos[indiceTexto][indiceLetra];
         indiceLetra++;
@@ -34,7 +34,7 @@ let indiceTexto = 0; // Índice para controlar cuál texto se muestra
           // Si hay más textos, inicia el próximo automáticamente
           setTimeout(() => {
             mensaje.innerHTML = ''; // Limpia el mensaje
-            mensaje.style.color = 'black'; // Reinicia el color (si aplica)
+           // mensaje.style.color = 'black'; // Reinicia el color (si aplica)
             indiceLetra = 0; // Reinicia el índice de la letra
             escribirTextoLLamada(); // Llama al siguiente texto
           }, 1000); // Espera 1 segundo antes de continuar
@@ -45,7 +45,7 @@ let indiceTexto = 0; // Índice para controlar cuál texto se muestra
     //Funcion para escribir texto que se puede reutilizar
 function escribirTexto(textoCompleto) {
   if (indice < textoCompleto.length) {
-    mensaje.style.color = 'blue';
+    //mensaje.style.color = 'blue';
     mensaje.innerText += textoCompleto[indice];
     indice++;
     setTimeout(() => escribirTexto(textoCompleto, indice), 60); // Llamada recursiva con el texto y el nuevo índice
@@ -60,7 +60,7 @@ function escribirTexto2(textoCompleto) {
     mensaje.style.color = 'purple';
     mensaje.innerText += textoCompleto[indice];
     indice++;
-    setTimeout(() => escribirTexto(textoCompleto, indice), 60); // Llamada recursiva con el texto y el nuevo índice
+    setTimeout(() => escribirTexto2(textoCompleto, indice), 60); // Llamada recursiva con el texto y el nuevo índice
   }else {
     escribiendo = false; // Permitir otro clic cuando termina de escribir
   }
@@ -206,12 +206,14 @@ IrLiving.addEventListener('click', function() {
   ARadio.play();
   if (!escribiendo) { // Solo continuar si no está escribiendo
    volver.style.display = 'none';
+   mensaje.style.color = 'black';
    escribirTextoLLamada(); // Inicia el efecto de escritura
  }
      ARadio.addEventListener('ended', () => {
        mensaje.innerText = ''; // Limpia el texto anterior
        indice = 0; // Reinicia el índice para el efecto
-       escribirTexto("  ¿Robos en el barrio?, ¿Y Marta está allá afuera? ¡Tengo que avisarle!");
+       mensaje.style.color = 'blue';
+       escribirTexto(" ¿Robos en el barrio?, ¿Y Marta está allá afuera? ¡Tengo que avisarle!");
        volver.style.display = 'block';
        audio.volume = 1.0;
        IrAfuera.style.display = 'block';
@@ -249,6 +251,7 @@ IrAfuera.addEventListener('click', function() {
     escribiendo = true;
     mensaje.innerText = ''; // Limpia el texto anterior
     indice = 0; // Reinicia el índice para el efecto
+    mensaje.style.color = 'blue';
     textoCompleto = "¿Alguien entró?";
     escribirTexto(textoCompleto); // Inicia el efecto de escritura
     clickAfuera++;
@@ -258,6 +261,7 @@ IrAfuera.addEventListener('click', function() {
     escribiendo = true;
     mensaje.innerText = ''; // Limpia el texto anterior
     indice = 0; // Reinicia el índice para el efecto
+    mensaje.style.color = 'blue';
     textoCompleto = "¿Quién está ahí?";
     escribirTexto(textoCompleto); // Inicia el efecto de escritura
     clickAfuera++;
@@ -266,6 +270,7 @@ IrAfuera.addEventListener('click', function() {
     escribiendo = true;
     mensaje.innerText = ''; // Limpia el texto anterior
     indice = 0; // Reinicia el índice para el efecto
+    mensaje.style.color = 'blue';
     textoCompleto = "¡Me están Robando!";
     escribirTexto(textoCompleto); // Inicia el efecto de escritura
     clickAfuera++;
@@ -274,9 +279,10 @@ IrAfuera.addEventListener('click', function() {
       escribiendo = true;
       mensaje.innerText = ''; // Limpia el texto anterior
       indice = 0; // Reinicia el índice para el efecto
+      mensaje.style.color = 'purple';
       textoCompleto = "Papá... ¡Soy yo!";
       AHija.play();
-      escribirTexto2(textoCompleto); // Inicia el efecto de escritura
+      escribirTexto(textoCompleto); // Inicia el efecto de escritura
       clickAfuera++;
       } 
     if (!escribiendo && clickAfuera == 4) {
@@ -286,7 +292,36 @@ IrAfuera.addEventListener('click', function() {
     textoCompleto = "";
     escribirTexto(textoCompleto); // Inicia el efecto de escritura
     clickAfuera = 0;
-    } 
+    const fadeEffect = document.createElement('div');
+    fadeEffect.id = 'fadeEffect';
+  
+    // Estilos del efecto de oscurecimiento
+    fadeEffect.style.position = 'fixed';
+    fadeEffect.style.top = '0';
+    fadeEffect.style.left = '0';
+    fadeEffect.style.width = '100%';
+    fadeEffect.style.height = '100%';
+    fadeEffect.style.backgroundColor = 'black'; // Color del efecto
+    fadeEffect.style.opacity = '0'; // Comienza transparente
+    fadeEffect.style.transition = 'opacity 8s cubic-bezier(0.25, 0.1, 0.25, 1)'; // Transición de opacidad
+    fadeEffect.style.zIndex = '9999'; // Asegura que esté sobre todo
+    fadeEffect.style.pointerEvents = 'none'; // Permitir interacción con elementos debajo
+  
+    // Añadir el efecto al cuerpo
+    document.body.appendChild(fadeEffect);
+  
+    // Iniciar la transición para oscurecer la pantalla
+    setTimeout(() => {
+      fadeEffect.style.opacity = '1'; // Gradualmente oscurecer la pantalla
+    }, 50); // Pequeño retraso para asegurar que se renderice
+  
+    // Eliminar el efecto de oscurecimiento después de la transición, pero no restaurar la opacidad
+    setTimeout(() => {
+      // No eliminamos el div fadeEffect, solo lo dejamos como está para que la pantalla siga oscura
+      fadeEffect.remove(); // Elimina esta línea para mantener la pantalla oscura
+      window.location.href = 'Dia2.html';
+    }, 8000); // Tiempo de transición (8s) + margen
+    }
 });
 
         //Click en Cuadro de esposa
