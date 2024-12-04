@@ -13,7 +13,7 @@ const textos = [
   ' Hola.',
   ' Hola papá, ¿cómo estás?.',
    ' Muy bien hija mía, ¿Cómo vas tú?.',
-   ' Todo bien viejito. Oye, ¿sabes si dejé mi chaleco allá en la mesa?, no lo encuentro.',
+   ' Todo bien viejito. Oye, ¿sabes si dejé mi chaleco azul allá en la mesa?, no lo encuentro.',
    ' Sabes qué, me parece que sí… Voy a mirar y te aviso.',
    ' Gracias papá, me avisas cualquier cosa.',
    ' Obvio hija, cuídate mucho.',
@@ -213,15 +213,51 @@ IrCocina.addEventListener('click', function() {
 loadScene(currentScene); 
 });
         //Click en Cuadro de esposa
+        let clickCuadro = 0;
         Cuadro.addEventListener('click', function() {
-          if (!escribiendo) {
+          volver.style.display = 'none';
+            if (!escribiendo && clickCuadro == 0) {
+                escribiendo = true;
+                mensaje.innerText = ''; // Limpia el texto anterior
+                indice = 0; // Reinicia el índice para el efecto
+                textoCompleto = "Ah, Marta...";
+                escribirTexto(textoCompleto); // Inicia el efecto de escritura
+                clickCuadro++;
+            }   
+            if (!escribiendo && clickCuadro == 1) {
+              escribiendo = true;
+              mensaje.innerText = ''; // Limpia el texto anterior
+              indice = 0; // Reinicia el índice para el efecto
+              textoCompleto = "Que rápido pasó el tiempo.";
+              escribirTexto(textoCompleto); // Inicia el efecto de escritura
+              clickCuadro++;
+          } 
+          if (!escribiendo && clickCuadro == 2) {
             escribiendo = true;
+            mensaje.innerText = ''; // Limpia el texto anterior
+            indice = 0; // Reinicia el índice para el efecto
+            textoCompleto = "Ya son casi tres años desde que te fuiste...";
+            escribirTexto(textoCompleto); // Inicia el efecto de escritura
+            clickCuadro++;
+        }   
+        if (!escribiendo && clickCuadro == 3) {
+          escribiendo = true;
           mensaje.innerText = ''; // Limpia el texto anterior
           indice = 0; // Reinicia el índice para el efecto
-          textoCompleto = "Es... es ella, ¿no? Mi... mi querida...";
+          textoCompleto = "Te extraño tanto cariño.";
           escribirTexto(textoCompleto); // Inicia el efecto de escritura
-          }
-        });
+          clickCuadro++;
+      }  
+        if (!escribiendo && clickCuadro == 4) {
+          Chaleco.style.display = 'none';
+          escribiendo = true;
+          mensaje.innerText = ''; // Limpia el texto anterior
+          indice = 0; // Reinicia el índice para el efecto
+          textoCompleto = "";
+          escribirTexto(textoCompleto); // Inicia el efecto de escritura
+          clickChaleco = 0;
+        }   
+      });
 
         //Click en Sudoku
         Sudoku.addEventListener('click', function() {
@@ -311,15 +347,15 @@ loadScene(currentScene);
             indiceLetra = 0;
             contador++;              
             if(contador == 2){
-              mensaje.style.color = 'yellow';
+              mensaje.style.color = 'purple';
               A1.play();
             }
             if(contador == 4){
-              mensaje.style.color = 'yellow';
+              mensaje.style.color = 'purple';
               A2.play();
             }
             if(contador == 6){
-              mensaje.style.color = 'yellow';
+              mensaje.style.color = 'purple';
               A3.play();
               contador = -1;
             }

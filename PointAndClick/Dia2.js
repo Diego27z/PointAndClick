@@ -262,7 +262,7 @@ if(Cocina == 1){
               escribiendo = true;
               mensaje.innerText = ''; // Limpia el texto anterior
               indice = 0; // Reinicia el índice para el efecto
-              textoCompleto = "... ¿Y este cuadro?";
+              textoCompleto = "Marta...";
               escribirTexto(textoCompleto); // Inicia el efecto de escritura
               clickCuadro++;
           }   
@@ -270,7 +270,7 @@ if(Cocina == 1){
             escribiendo = true;
             mensaje.innerText = ''; // Limpia el texto anterior
             indice = 0; // Reinicia el índice para el efecto
-            textoCompleto = "...";
+            textoCompleto = "Te extraño tanto amor mío.";
             escribirTexto(textoCompleto); // Inicia el efecto de escritura
             clickCuadro++;
         }   
@@ -278,10 +278,18 @@ if(Cocina == 1){
           escribiendo = true;
           mensaje.innerText = ''; // Limpia el texto anterior
           indice = 0; // Reinicia el índice para el efecto
-          textoCompleto = "¡A sí!, Es mi esposa.";
+          textoCompleto = "Ya son dos años...";
           escribirTexto(textoCompleto); // Inicia el efecto de escritura
           clickCuadro++;
       }   
+      if (!escribiendo && clickCuadro == 2) {
+        escribiendo = true;
+        mensaje.innerText = ''; // Limpia el texto anterior
+        indice = 0; // Reinicia el índice para el efecto
+        textoCompleto = "Que maldita enfermedad.";
+        escribirTexto(textoCompleto); // Inicia el efecto de escritura
+        clickCuadro++;
+    } 
       if (!escribiendo && clickCuadro == 3) {
         escribiendo = true;
         mensaje.innerText = ''; // Limpia el texto anterior
@@ -298,7 +306,7 @@ if(Cocina == 1){
             escribiendo = true;
           mensaje.innerText = ''; // Limpia el texto anterior
           indice = 0; // Reinicia el índice para el efecto
-          textoCompleto = "Me dijeron que esto me ayudaría, pero ¿para qué?";
+          textoCompleto = "Hace tiempo que no ocupo esta tontera.";
           escribirTexto(textoCompleto); // Inicia el efecto de escritura
           }
         });
@@ -313,23 +321,23 @@ if(Cocina == 1){
             indiceLetra = 0;
             contador++;              
             if(contador == 1){
-              mensaje.style.color = 'yellow';
+              mensaje.style.color = 'purple';
               A4.play();
             }
             if(contador == 3){
-              mensaje.style.color = 'yellow';
+              mensaje.style.color = 'purple';
               A5.play();
             }
             if(contador == 6){
-              mensaje.style.color = 'yellow';
+              mensaje.style.color = 'purple';
               A6.play();
             }
             if(contador == 8){
-              mensaje.style.color = 'yellow';
+              mensaje.style.color = 'purple';
               A7.play();
             }
             if(contador == 9){
-              mensaje.style.color = 'yellow';
+              mensaje.style.color = 'purple';
               contador = -2;
             }
             escribirTextoLLamada(); // Inicia el efecto de escritura

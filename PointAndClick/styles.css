@@ -103,7 +103,7 @@ body {
     padding: 10px; /* Espaciado interno */
     width: 50%; /* Ancho del contenedor */
     margin: 20px auto; /* Centrar el div en la página */
-    top: 90%;
+    top: 85%;
     white-space: pre-wrap; /* Para mantener espacios y saltos de línea */
   }
   @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
@@ -224,6 +224,37 @@ body {
 }
 
 .IrCocina:active {
+  background-color: rgba(0, 0, 0, 0.4); /* Fondo negro con 40% de opacidad */
+  transform: scale(0.98); /* Pequeña reducción al hacer clic */
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3); /* Sombra más pequeña */
+}
+
+.IrAfuera {
+  position: absolute;
+  width: 2%;
+  height: 25%;
+  top: 30%;
+  left: 65%;
+  background-color: rgba(0, 0, 0, 0.05);
+  color: white; /* Texto blanco */
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px; /* Bordes redondeados */
+  padding: 12px 24px; /* Espaciado interno */
+  font-size: 16px; /* Tamaño del texto */
+  font-family: 'Arial', sans-serif; /* Tipografía clara */
+  cursor: pointer; /* Cambia el cursor al pasar el mouse */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+  transition: all 0.3s ease; /* Animación suave al interactuar */
+}
+
+.IrAfuera:hover {
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo negro con 20% de opacidad */
+  color: #ffffff; /* Mantén el texto blanco */
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.5); /* Sombra más fuerte al pasar el mouse */
+}
+
+.IrAfuera:active {
   background-color: rgba(0, 0, 0, 0.4); /* Fondo negro con 40% de opacidad */
   transform: scale(0.98); /* Pequeña reducción al hacer clic */
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3); /* Sombra más pequeña */

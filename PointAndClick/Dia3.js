@@ -9,15 +9,15 @@ const scenes = [
 ];
 const textos = [
   ' Y bueno pasando a otras noticias, para toda la gente que nos escucha,',
-  ' sobre todo a la gente mayor,',
-  'informar que el indice de robos a casas ha incrementado,',
-   ' los delincuentes visualizan dentro de que horarios la casa queda sola',
-  ' o con un adulto mayor para aprovechar y entrar a robar.',
+  ' Sobre todo a la gente mayor,',
+  ' Informar que el indice de robos a casas ha incrementado,',
+  ' Los delincuentes visualizan dentro de que horarios la casa queda sola',
+  ' O con un adulto mayor para aprovechar y entrar a robar.',
   ''
 ];
 
 
-const colores = ['blue', 'yellow'];
+const colores = ['blue', 'purple'];
 let indiceTexto = 0; // Índice para controlar cuál texto se muestra
     let indiceLetra = 0; // Índice para controlar cuántas letras se muestran
     let escribiendo = false; 
@@ -73,7 +73,6 @@ volver.style.display = 'none';
 const Sudoku = document.getElementById('Sudoku');
 Sudoku.style.display = 'none';
 
-
 const Celu = document.getElementById('Celu');
 Celu.style.display = 'none';
 
@@ -93,6 +92,9 @@ IrLiving.style.display = 'none';
 
 const IrCocina = document.getElementById('IrCocina');
 IrCocina.style.display = 'none';
+
+const IrAfuera = document.getElementById('IrAfuera');
+IrAfuera.style.display = 'none';
 
 const Cuadro = document.getElementById('Cuadro');
 Cuadro.style.display = 'none';
@@ -163,6 +165,7 @@ setTimeout(() => {
   Cuadro.style.display = 'block';
   mensaje.style.display = 'Block';
   Button.style.display = 'block';
+  Sudoku.style.display = 'block';
   //Sudoku.style.display = 'block';
 });
 
@@ -176,6 +179,7 @@ Button.addEventListener('click', function() {
     volver.style.display = 'block';
     IrLiving.style.display = 'block';
     IrCocina.style.display = 'block';
+    //IrAfuera.style.display = 'none';
     mensaje.innerText = ''; // Limpia el texto anterior
     // Cargar la nueva escena
   loadScene(currentScene); 
@@ -189,6 +193,7 @@ IrLiving.addEventListener('click', function() {
   IrCocina.style.display = 'none';
  //   video.style.display = 'none';
  if(IraLiving==1){
+  //IrAfuera.style.display = 'none';
   audio.volume = 0.4;
   ARadio.play();
   if (!escribiendo) { // Solo continuar si no está escribiendo
@@ -198,11 +203,13 @@ IrLiving.addEventListener('click', function() {
      ARadio.addEventListener('ended', () => {
        mensaje.innerText = ''; // Limpia el texto anterior
        indice = 0; // Reinicia el índice para el efecto
-       escribirTexto("¿Robos en el barrio?, ¿Y Marta está allá afuera? ¡Tengo que avisarle!");
+       escribirTexto("  ¿Robos en el barrio?, ¿Y Marta está allá afuera? ¡Tengo que avisarle!");
        volver.style.display = 'block';
        audio.volume = 1.0;
+       //IrAfuera.style.display = 'block';
      });
      IraLiving=2;
+     
  }
   loadScene(currentScene); // Cargar la nueva escena
 });
@@ -211,6 +218,7 @@ IrCocina.addEventListener('click', function() {
   currentScene = 3;
   //Ocultar y Mostrar elementos correspondientes
   volver.style.display = 'block';
+  //IrAfuera.style.display = 'none';
   IrLiving.style.display = 'none';
   IrCocina.style.display = 'none';
   mensaje.innerText = ''; // Limpia el texto anterior
@@ -226,32 +234,8 @@ loadScene(currentScene);
               indice = 0; // Reinicia el índice para el efecto
               textoCompleto = "Marta, ¿dónde estás? ¿Habrá salido? Sabe que no puede salir sola.";
               escribirTexto(textoCompleto); // Inicia el efecto de escritura
-              clickCuadro++;
-          }   
-          if (!escribiendo && clickCuadro == 1) {
-            escribiendo = true;
-            mensaje.innerText = ''; // Limpia el texto anterior
-            indice = 0; // Reinicia el índice para el efecto
-            textoCompleto = "...";
-            escribirTexto(textoCompleto); // Inicia el efecto de escritura
-            clickCuadro++;
-        }   
-        if (!escribiendo && clickCuadro == 2) {
-          escribiendo = true;
-          mensaje.innerText = ''; // Limpia el texto anterior
-          indice = 0; // Reinicia el índice para el efecto
-          textoCompleto = "¡A sí!, Es mi esposa.";
-          escribirTexto(textoCompleto); // Inicia el efecto de escritura
-          clickCuadro++;
-      }   
-      if (!escribiendo && clickCuadro == 3) {
-        escribiendo = true;
-        mensaje.innerText = ''; // Limpia el texto anterior
-        indice = 0; // Reinicia el índice para el efecto
-        textoCompleto = "";
-        escribirTexto(textoCompleto); // Inicia el efecto de escritura
-        clickCuadro = 0;
-    } 
+              clickCuadro = 0;
+          }    
         });
 
         //Click en Sudoku
@@ -260,7 +244,7 @@ loadScene(currentScene);
             escribiendo = true;
           mensaje.innerText = ''; // Limpia el texto anterior
           indice = 0; // Reinicia el índice para el efecto
-          textoCompleto = "Me dijeron que esto me ayudaría, pero ¿para qué?";
+          textoCompleto = "Hace tiempo que no ocupo esta tontera.";
           escribirTexto(textoCompleto); // Inicia el efecto de escritura
           }
         });
@@ -276,6 +260,7 @@ volver.addEventListener('click', function() {
       Button.style.display = 'block';
       Cuadro.style.display = 'block';
       Sudoku.style.display = 'block';
+      //IrAfuera.style.display = 'none';
       IrLiving.style.display = 'none';
       IrCocina.style.display = 'none';
       mensaje.innerText = '';
